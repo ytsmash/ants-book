@@ -25,6 +25,21 @@ ll gcd(ll x, ll y) { if (y == 0) return x; else return gcd(y, x % y); }
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 
 int main() {
-    
+    int L, n;
+    cin >> L >> n;
+    vector<int> x(n);
+    for (int i = 0; i < n; i++) cin >> x[i];
+
+    int minT = 0;
+    for (int i = 0; i < n; i++) {
+        chmax(minT, min(x[i], L - x[i]));
+    }
+
+    int maxT =0;
+    for (int i = 0; i < n; i++) {
+        chmax(maxT, max(x[i], L - x[i]));
+    }
+
+    cout << minT << " " << maxT << endl;
     return 0;
 }
